@@ -6,6 +6,45 @@ const CATEGORIES = ["Women's clothes", "Men's clothes", "Shoes", "Bags", "Kids",
 const CONDITIONS = ["New with tags", "Like new", "Good", "Fair"];
 const CITIES = ["Lagos", "Abuja", "Port Harcourt", "Ibadan", "Benin City", "Enugu", "Kano", "Owerri", "Uyo", "Calabar", "Abeokuta", "Warri", "Kaduna", "Jos", "Ilorin", "Other"];
 
+// ---------- icons ----------
+const ICONS = {
+  home: '<path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/>',
+  plus: '<path d="M12 5v14M5 12h14"/>',
+  user: '<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"/>',
+  search: '<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>',
+  grid: '<rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/>',
+  dress: '<path d="M9 2h6l-1 5 5 14H5l5-14z"/>',
+  shirt: '<path d="M20.4 3.5 16 2a4 4 0 0 1-8 0L3.6 3.5a2 2 0 0 0-1.3 2.2l.6 3.5a1 1 0 0 0 1 .8H6v10a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V10h2.1a1 1 0 0 0 1-.8l.6-3.5a2 2 0 0 0-1.3-2.2z"/>',
+  shoe: '<path d="M3 17v-4l4-1 3-5 3 3 4 1 4 3v3z"/><path d="M3 17h18v2H3z"/>',
+  bag: '<path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18M16 10a4 4 0 0 1-8 0"/>',
+  kids: '<circle cx="12" cy="12" r="9"/><path d="M9 14.5c.8.9 1.8 1.4 3 1.4s2.2-.5 3-1.4M9 9.5h.01M15 9.5h.01"/>',
+  phone: '<rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/>',
+  cup: '<path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z"/>',
+  sofa: '<path d="M4 11V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3"/><path d="M2 13a2 2 0 0 1 4 0v2h12v-2a2 2 0 0 1 4 0v5H2z"/><path d="M5 18v2M19 18v2"/>',
+  dots: '<circle cx="5" cy="12" r="1.3"/><circle cx="12" cy="12" r="1.3"/><circle cx="19" cy="12" r="1.3"/>',
+  tag: '<path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z"/><path d="M7.5 7.5h.01"/>',
+  pin: '<path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/>',
+  ruler: '<path d="M3 17 17 3l4 4L7 21z"/><path d="m7 13 2 2M10 10l2 2M13 7l2 2"/>',
+  star: '<path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1 6.2L12 17.3 6.5 20.2l1-6.2L3 9.6l6.2-.9z"/>',
+  logout: '<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5M21 12H9"/>',
+  chat: '<path d="M21 12a8 8 0 0 1-11.8 7L3 21l2-6A8 8 0 1 1 21 12z"/>',
+  call: '<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/>',
+};
+const ic = (name) => `<svg class="ic" viewBox="0 0 24 24" aria-hidden="true">${ICONS[name] || ""}</svg>`;
+
+// icon, background tint, icon colour
+const CAT_STYLE = {
+  "Women's clothes": ["dress", "#FCE4EF", "#C2185B"],
+  "Men's clothes": ["shirt", "#E3EEFB", "#2F6DB5"],
+  "Shoes": ["shoe", "#FFEBDD", "#D2691E"],
+  "Bags": ["bag", "#EFE6FD", "#6534DA"],
+  "Kids": ["kids", "#FFF6CF", "#A07C00"],
+  "Phones & gadgets": ["phone", "#E2F4EA", "#1F8A4C"],
+  "Home & kitchen": ["cup", "#FDE8E4", "#C23A2B"],
+  "Furniture": ["sofa", "#E6F3F5", "#1B7A86"],
+  "Other": ["dots", "#EEEEF2", "#5E5A6E"],
+};
+
 const $ = (s, el = document) => el.querySelector(s);
 const app = $("#app");
 let ME = null;
@@ -15,6 +54,12 @@ const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "
 const options = (list, selected = "", placeholder = "") =>
   (placeholder ? `<option value="">${esc(placeholder)}</option>` : "") +
   list.map((x) => `<option ${x === selected ? "selected" : ""}>${esc(x)}</option>`).join("");
+const firstName = () => (ME ? ME.name.split(" ")[0] : "");
+const initial = () => (ME ? ME.name.trim()[0].toUpperCase() : "");
+function greeting() {
+  const h = new Date().getHours();
+  return h < 12 ? "Good morning" : h < 17 ? "Good afternoon" : "Good evening";
+}
 
 async function api(path, opts = {}) {
   const res = await fetch("/api/" + path, {
@@ -44,33 +89,31 @@ function parseHash() {
   return { parts: p.split("/").filter(Boolean), query: new URLSearchParams(qs || "") };
 }
 
-// ---------- header ----------
-function renderHeader() {
+// ---------- header + tabs ----------
+function renderChrome(section) {
   document.title = APP_NAME;
-  $("#brand").textContent = APP_NAME;
-  $("#nav").innerHTML = ME
-    ? `<a href="#/me">My items</a>`
-    : `<a href="#/login">Log in</a><a href="#/signup">Sign up</a>`;
-  const { query } = parseHash();
-  $("#searchInput").value = query.get("q") || "";
-}
+  $("#brandName").textContent = APP_NAME;
+  $("#logoMark").textContent = APP_NAME[0].toUpperCase();
+  $("#topRight").innerHTML = ME
+    ? `<a class="avatar-sm" href="#/me" aria-label="My profile">${esc(initial())}</a>`
+    : `<a class="link" href="#/login">Log in</a><a class="btn dark small" href="#/signup">Sign up free</a>`;
 
-$("#searchForm").addEventListener("submit", (e) => {
-  e.preventDefault();
-  const q = $("#searchInput").value.trim();
-  const { query } = parseHash();
-  query.set("q", q);
-  if (!q) query.delete("q");
-  query.delete("page");
-  go("/?" + query.toString());
-  $("#searchInput").blur();
-});
+  const tabs = [
+    ["home", "#/", "Home", "home"],
+    ["sell", "#/sell", "Sell", "plus"],
+    ["me", ME ? "#/me" : "#/login", ME ? "Profile" : "Log in", "user"],
+  ];
+  $("#tabs").innerHTML = tabs
+    .map(([key, href, label, icon]) =>
+      `<a class="tab" href="${href}" ${section === key ? 'aria-current="page"' : ""}>${ic(icon)}<span>${label}</span></a>`)
+    .join("");
+}
 
 // ---------- router ----------
 async function route() {
   const { parts, query } = parseHash();
-  renderHeader();
-  $("#sellFab").style.display = parts[0] === "sell" ? "none" : "";
+  const section = !parts.length || parts[0] === "item" ? "home" : parts[0] === "sell" ? "sell" : ["me", "login", "signup"].includes(parts[0]) ? "me" : "";
+  renderChrome(section);
   window.scrollTo(0, 0);
   app.innerHTML = `<p class="loading">Loading…</p>`;
   try {
@@ -95,16 +138,24 @@ function card(l) {
       <span class="tag">${naira(l.price)}</span>
       ${l.status === "sold" ? `<div class="sold-mark">Sold</div>` : ""}
     </div>
-    <div class="title">${esc(l.title)}</div>
-    <div class="meta">${esc(meta)}</div>
+    <div class="card-body">
+      <div class="title">${esc(l.title)}</div>
+      <div class="meta">${esc(meta)}</div>
+    </div>
   </a>`;
 }
 
-// ---------- feed ----------
+function chip(label, value, active, icon, bg, fg) {
+  return `<button class="chip" aria-pressed="${active}" data-cat="${esc(value)}">
+    <span class="chip-ic" style="background:${bg};color:${fg}">${ic(icon)}</span>${esc(label)}</button>`;
+}
+
+// ---------- home / feed ----------
 async function feedPage(query) {
   const q = query.get("q") || "";
   const category = query.get("category") || "";
   const city = query.get("city") || "";
+  const isHome = !q && !category && !city;
   let page = 0;
 
   const setFilter = (key, val) => {
@@ -113,19 +164,43 @@ async function feedPage(query) {
     go("/?" + next.toString());
   };
 
-  const heading = q ? `Results for “${esc(q)}”` : category ? esc(category) : "Just listed";
+  const hero = isHome ? `
+    ${ME ? `<h1 class="greet">${greeting()}, ${esc(firstName())}</h1>` : ""}
+    <section class="hero">
+      <div class="hero-dot"></div>
+      <p class="hero-label">Pre-loved, priced to move</p>
+      <h2 class="hero-title">Sell what you no longer use.</h2>
+      <p class="hero-sub">Clothes, shoes, gadgets and home items from people near you. Chat the seller on WhatsApp.</p>
+    </section>
+    <div class="hero-actions">
+      <a class="btn dark" href="#/sell">${ic("plus")} Sell an item</a>
+      <a class="btn outline" href="${ME ? "#/me" : "#/signup"}">${ME ? "My items" : "Create free account"}</a>
+    </div>` : "";
+
+  const heading = q ? `Results for “${esc(q)}”` : category ? esc(category) : city ? `In ${esc(city)}` : "Just listed";
+
   app.innerHTML = `
+    ${hero}
+    <form class="search" id="searchForm" role="search">
+      ${ic("search")}
+      <input id="searchInput" type="search" value="${esc(q)}" placeholder="Search e.g. Zara dress, sneakers, blender" aria-label="Search items">
+    </form>
+    <p class="label">Shop by category</p>
     <div class="chips" id="chips">
-      <button class="chip" aria-pressed="${!category}" data-cat="">All</button>
-      ${CATEGORIES.map((c) => `<button class="chip" aria-pressed="${c === category}" data-cat="${esc(c)}">${esc(c)}</button>`).join("")}
+      ${chip("All", "", !category, "grid", "#EFE6FD", "#6534DA")}
+      ${CATEGORIES.map((c) => chip(c, c, c === category, ...CAT_STYLE[c])).join("")}
     </div>
     <div class="filter-row">
       <h1>${heading}</h1>
-      <select id="cityFilter" aria-label="Filter by city">${options(CITIES, city, "All cities")}</select>
+      <select class="select" id="cityFilter" aria-label="Filter by city">${options(CITIES, city, "All cities")}</select>
     </div>
     <div class="grid" id="grid"></div>
     <div id="feedFoot"></div>`;
 
+  $("#searchForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+    setFilter("q", $("#searchInput").value.trim());
+  });
   $("#chips").addEventListener("click", (e) => {
     const b = e.target.closest(".chip");
     if (b) setFilter("category", b.dataset.cat);
@@ -139,7 +214,7 @@ async function feedPage(query) {
     const foot = $("#feedFoot");
     if (page === 0 && !data.items.length) {
       foot.innerHTML = `<div class="empty"><p>${q || category || city ? "No items match that yet." : "Nothing listed yet. Be the first to sell something."}</p>
-        <a class="btn" href="#/sell">Sell an item</a></div>`;
+        <a class="btn" href="#/sell">${ic("plus")} Sell an item</a></div>`;
     } else if (data.more) {
       foot.innerHTML = `<button class="btn ghost more" id="moreBtn">Show more</button>`;
       $("#moreBtn").onclick = async (e) => {
@@ -161,22 +236,28 @@ function waLink(phone, title) {
   return `https://wa.me/${intl}?text=${encodeURIComponent(text)}`;
 }
 
+function factRow(icon, bg, fg, label, value) {
+  return `<div class="row"><span class="row-ic" style="background:${bg};color:${fg}">${ic(icon)}</span>
+    <span class="grow">${esc(label)}</span><span class="val">${esc(value)}</span></div>`;
+}
+
 async function itemPage(id) {
   const l = await api("listings/" + encodeURIComponent(id));
-  const since = new Date(l.seller_since).toLocaleDateString("en-NG", { month: "short", year: "numeric" });
+  const since = new Date(l.seller_since).toLocaleDateString("en-NG", { month: "long", year: "numeric" });
   const where = [l.area, l.city].filter(Boolean).join(", ");
+  const [catIcon, catBg, catFg] = CAT_STYLE[l.category] || CAT_STYLE.Other;
 
   let contact;
   if (l.mine) {
     contact = `
-      <button class="btn" id="toggleSold">${l.status === "sold" ? "Mark as available" : "Mark as sold"}</button>
+      <button class="btn dark" id="toggleSold">${l.status === "sold" ? "Mark as available" : "Mark as sold"}</button>
       <button class="btn danger" id="deleteBtn">Delete item</button>`;
   } else if (l.status === "sold") {
-    contact = `<p><strong>This item has been sold.</strong></p>`;
+    contact = `<p class="tip">This item has been sold.</p>`;
   } else if (l.loggedIn && l.seller_phone) {
     contact = `
-      <a class="btn wa" href="${waLink(l.seller_phone, l.title)}" target="_blank" rel="noopener">Chat on WhatsApp</a>
-      <a class="btn ghost" href="tel:${esc(l.seller_phone)}">Call ${esc(l.seller_phone)}</a>`;
+      <a class="btn wa" href="${waLink(l.seller_phone, l.title)}" target="_blank" rel="noopener">${ic("chat")} Chat on WhatsApp</a>
+      <a class="btn outline" href="tel:${esc(l.seller_phone)}">${ic("call")} Call ${esc(l.seller_phone)}</a>`;
   } else {
     contact = `<a class="btn" href="#/login?next=/item/${l.id}">Log in to contact seller</a>`;
   }
@@ -187,22 +268,22 @@ async function itemPage(id) {
         <div class="gallery">${l.images.map((i) => `<img src="/api/img/${i}" alt="${esc(l.title)}">`).join("")}</div>
         ${l.images.length > 1 ? `<div class="gallery-count">${l.images.length} photos, swipe to see more</div>` : ""}
       </div>
-      <div>
-        <span class="tag big">${naira(l.price)}</span>
+      <div class="panel">
+        <div class="price-big">${naira(l.price)}</div>
         <h1>${esc(l.title)}</h1>
-        <dl class="facts">
-          <dt>Condition</dt><dd>${esc(l.condition)}</dd>
-          ${l.size ? `<dt>Size</dt><dd>${esc(l.size)}</dd>` : ""}
-          <dt>Category</dt><dd>${esc(l.category)}</dd>
-          <dt>Location</dt><dd>${esc(where)}</dd>
-        </dl>
+        <div class="rows facts">
+          ${factRow("star", "#EFE6FD", "#6534DA", "Condition", l.condition)}
+          ${l.size ? factRow("ruler", "#E3EEFB", "#2F6DB5", "Size", l.size) : ""}
+          ${factRow(catIcon, catBg, catFg, "Category", l.category)}
+          ${factRow("pin", "#FFEBDD", "#D2691E", "Location", where)}
+        </div>
         ${l.description ? `<p class="desc">${esc(l.description)}</p>` : ""}
         <div class="seller">
-          <strong>${esc(l.seller_name)}</strong>
-          <div class="meta" style="color:var(--muted)">Selling on ${esc(APP_NAME)} since ${since}</div>
-          <div class="actions">${contact}</div>
-          ${l.mine ? "" : `<p class="tip">Meet in a busy public place and check the item before you pay. Never send money in advance to someone you haven't met.</p>`}
+          <div class="avatar-sm">${esc((l.seller_name || "?")[0].toUpperCase())}</div>
+          <div><strong>${esc(l.seller_name)}</strong><div class="meta">Selling on ${esc(APP_NAME)} since ${since}</div></div>
         </div>
+        <div class="actions">${contact}</div>
+        ${l.mine ? "" : `<p class="tip">Meet in a busy public place and check the item before you pay. Never send money in advance to someone you haven't met.</p>`}
       </div>
     </article>`;
 
@@ -249,7 +330,7 @@ function compress(file, max = 1000, quality = 0.75) {
 function sellPage() {
   const photos = [];
   app.innerHTML = `
-    <form class="form" id="sellForm" novalidate>
+    <form class="form panel" id="sellForm" novalidate>
       <h1>Sell an item</h1>
       <div>
         <label>Photos <span class="hint">Up to 5. The first photo is the cover.</span></label>
@@ -271,7 +352,7 @@ function sellPage() {
       <label>Description <span class="hint">Brand, fit, any marks or flaws</span>
         <textarea name="description" maxlength="1500"></textarea></label>
       <p class="error" id="err"></p>
-      <button class="btn" id="postBtn">Post item</button>
+      <button class="btn dark" id="postBtn">Post item</button>
     </form>`;
 
   const drawPhotos = () => {
@@ -319,15 +400,15 @@ function authPage(mode, next) {
   const isSignup = mode === "signup";
   const nextQs = next ? "?next=" + encodeURIComponent(next) : "";
   app.innerHTML = `
-    <form class="form" id="authForm" novalidate>
-      <h1>${isSignup ? "Create your account" : "Log in"}</h1>
+    <form class="form panel" id="authForm" novalidate>
+      <h1>${isSignup ? "Create your account" : "Welcome back"}</h1>
       ${isSignup ? `<label>Your name <input name="name" maxlength="60" autocomplete="name" required></label>` : ""}
-      <label>Phone number <span class="hint">${isSignup ? "Buyers will contact you on this number via WhatsApp" : ""}</span>
+      <label>Phone number ${isSignup ? `<span class="hint">Buyers will contact you on this number via WhatsApp</span>` : ""}
         <input name="phone" type="tel" inputmode="tel" placeholder="08012345678" autocomplete="tel" required></label>
       ${isSignup ? `<label>City <select name="city">${options(CITIES, "", "Choose")}</select></label>` : ""}
       <label>Password <input name="password" type="password" minlength="6" autocomplete="${isSignup ? "new-password" : "current-password"}" required></label>
       <p class="error" id="err"></p>
-      <button class="btn" id="authBtn">${isSignup ? "Create account" : "Log in"}</button>
+      <button class="btn dark" id="authBtn">${isSignup ? "Create account" : "Log in"}</button>
       <p class="switch">${isSignup
         ? `Already have an account? <a href="#/login${nextQs}">Log in</a>`
         : `New here? <a href="#/signup${nextQs}">Create an account</a>`}</p>
@@ -350,18 +431,38 @@ function authPage(mode, next) {
   };
 }
 
-// ---------- my account ----------
+// ---------- profile ----------
 async function mePage() {
-  const data = await api("my-listings");
+  const { items } = await api("my-listings");
+  const active = items.filter((i) => i.status === "active").length;
+  const sold = items.length - active;
+
   app.innerHTML = `
-    <div class="filter-row">
-      <h1>Hi, ${esc(ME.name.split(" ")[0])}</h1>
-      <button class="btn ghost" id="logoutBtn">Log out</button>
+    <section class="panel profile">
+      <div class="avatar">${esc(initial())}</div>
+      <div>
+        <h1>${esc(ME.name)}</h1>
+        <p>${esc(ME.phone)}</p>
+        ${ME.city ? `<span class="pill">${esc(ME.city)}</span>` : ""}
+      </div>
+    </section>
+    <div class="stats">
+      <div class="stat"><b>${items.length}</b><span>Listed</span></div>
+      <div class="stat"><b>${active}</b><span>Active</span></div>
+      <div class="stat"><b>${sold}</b><span>Sold</span></div>
     </div>
-    <h2 class="section-title">Your items</h2>
-    ${data.items.length
-      ? `<div class="grid">${data.items.map(card).join("")}</div>`
-      : `<div class="empty"><p>You haven't listed anything yet.</p><a class="btn" href="#/sell">Sell an item</a></div>`}`;
+
+    <p class="label">Your items</p>
+    ${items.length
+      ? `<div class="grid">${items.map(card).join("")}</div>`
+      : `<div class="empty"><p>You haven't listed anything yet.</p><a class="btn" href="#/sell">${ic("plus")} Sell an item</a></div>`}
+
+    <p class="label">Account</p>
+    <div class="rows">
+      <a class="row" href="#/sell"><span class="row-ic" style="background:#EFE6FD;color:#6534DA">${ic("tag")}</span><span class="grow">Sell an item</span><span class="chev">›</span></a>
+      <button class="row" id="logoutBtn"><span class="row-ic" style="background:#FDE8E4;color:#C23A2B">${ic("logout")}</span><span class="grow">Log out</span><span class="chev">›</span></button>
+    </div>`;
+
   $("#logoutBtn").onclick = async () => {
     await api("logout", { method: "POST" }).catch(() => {});
     ME = null;
