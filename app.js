@@ -6,44 +6,13 @@ const CATEGORIES = ["Women's clothes", "Men's clothes", "Shoes", "Bags", "Kids",
 const CONDITIONS = ["New with tags", "Like new", "Good", "Fair"];
 const CITIES = ["Lagos", "Abuja", "Port Harcourt", "Ibadan", "Benin City", "Enugu", "Kano", "Owerri", "Uyo", "Calabar", "Abeokuta", "Warri", "Kaduna", "Jos", "Ilorin", "Other"];
 
-// ---------- icons ----------
 const ICONS = {
-  home: '<path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/>',
   plus: '<path d="M12 5v14M5 12h14"/>',
   user: '<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"/>',
-  search: '<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>',
-  grid: '<rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/>',
-  dress: '<path d="M9 2h6l-1 5 5 14H5l5-14z"/>',
-  shirt: '<path d="M20.4 3.5 16 2a4 4 0 0 1-8 0L3.6 3.5a2 2 0 0 0-1.3 2.2l.6 3.5a1 1 0 0 0 1 .8H6v10a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V10h2.1a1 1 0 0 0 1-.8l.6-3.5a2 2 0 0 0-1.3-2.2z"/>',
-  shoe: '<path d="M3 17v-4l4-1 3-5 3 3 4 1 4 3v3z"/><path d="M3 17h18v2H3z"/>',
-  bag: '<path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18M16 10a4 4 0 0 1-8 0"/>',
-  kids: '<circle cx="12" cy="12" r="9"/><path d="M9 14.5c.8.9 1.8 1.4 3 1.4s2.2-.5 3-1.4M9 9.5h.01M15 9.5h.01"/>',
-  phone: '<rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/>',
-  cup: '<path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z"/>',
-  sofa: '<path d="M4 11V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3"/><path d="M2 13a2 2 0 0 1 4 0v2h12v-2a2 2 0 0 1 4 0v5H2z"/><path d="M5 18v2M19 18v2"/>',
-  dots: '<circle cx="5" cy="12" r="1.3"/><circle cx="12" cy="12" r="1.3"/><circle cx="19" cy="12" r="1.3"/>',
-  tag: '<path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z"/><path d="M7.5 7.5h.01"/>',
-  pin: '<path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/>',
-  ruler: '<path d="M3 17 17 3l4 4L7 21z"/><path d="m7 13 2 2M10 10l2 2M13 7l2 2"/>',
-  star: '<path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1 6.2L12 17.3 6.5 20.2l1-6.2L3 9.6l6.2-.9z"/>',
-  logout: '<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5M21 12H9"/>',
   chat: '<path d="M21 12a8 8 0 0 1-11.8 7L3 21l2-6A8 8 0 1 1 21 12z"/>',
-  call: '<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/>',
+  back: '<path d="M15 18l-6-6 6-6"/>',
 };
 const ic = (name) => `<svg class="ic" viewBox="0 0 24 24" aria-hidden="true">${ICONS[name] || ""}</svg>`;
-
-// icon, background tint, icon colour
-const CAT_STYLE = {
-  "Women's clothes": ["dress", "#FCE4EF", "#C2185B"],
-  "Men's clothes": ["shirt", "#E3EEFB", "#2F6DB5"],
-  "Shoes": ["shoe", "#FFEBDD", "#D2691E"],
-  "Bags": ["bag", "#E2F0E9", "#0E5A43"],
-  "Kids": ["kids", "#FFF6CF", "#A07C00"],
-  "Phones & gadgets": ["phone", "#E2F4EA", "#1F8A4C"],
-  "Home & kitchen": ["cup", "#FDE8E4", "#C23A2B"],
-  "Furniture": ["sofa", "#E6F3F5", "#1B7A86"],
-  "Other": ["dots", "#EEEEF2", "#5E5A6E"],
-};
 
 const $ = (s, el = document) => el.querySelector(s);
 const app = $("#app");
@@ -54,12 +23,6 @@ const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "
 const options = (list, selected = "", placeholder = "") =>
   (placeholder ? `<option value="">${esc(placeholder)}</option>` : "") +
   list.map((x) => `<option ${x === selected ? "selected" : ""}>${esc(x)}</option>`).join("");
-const firstName = () => (ME ? ME.name.split(" ")[0] : "");
-const initial = () => (ME ? ME.name.trim()[0].toUpperCase() : "");
-function greeting() {
-  const h = new Date().getHours();
-  return h < 12 ? "Good morning" : h < 17 ? "Good afternoon" : "Good evening";
-}
 
 async function api(path, opts = {}) {
   const res = await fetch("/api/" + path, {
@@ -89,31 +52,32 @@ function parseHash() {
   return { parts: p.split("/").filter(Boolean), query: new URLSearchParams(qs || "") };
 }
 
-// ---------- header + tabs ----------
-function renderChrome(section) {
+// ---------- header ----------
+function renderHeader(query) {
   document.title = APP_NAME;
-  $("#brandName").textContent = APP_NAME;
-  $("#logoMark").textContent = APP_NAME[0].toUpperCase();
-  $("#topRight").innerHTML = ME
-    ? `<a class="avatar-sm" href="#/me" aria-label="My profile">${esc(initial())}</a>`
-    : `<a class="link" href="#/login">Log in</a><a class="btn dark small" href="#/signup">Sign up free</a>`;
-
-  const tabs = [
-    ["home", "#/", "Home", "home"],
-    ["sell", "#/sell", "Sell", "plus"],
-    ["me", ME ? "#/me" : "#/login", ME ? "Profile" : "Log in", "user"],
-  ];
-  $("#tabs").innerHTML = tabs
-    .map(([key, href, label, icon]) =>
-      `<a class="tab" href="${href}" ${section === key ? 'aria-current="page"' : ""}>${ic(icon)}<span>${label}</span></a>`)
-    .join("");
+  $("#brand").textContent = APP_NAME;
+  $("#searchInput").value = query.get("q") || "";
+  $("#topRight").innerHTML = `
+    <a class="btn sell" href="#/sell">${ic("plus")}<span>Sell</span></a>
+    ${ME
+      ? `<a class="account" href="#/me" aria-label="My account">${ic("user")}<span>${esc(ME.name.split(" ")[0])}</span></a>`
+      : `<a class="account" href="#/login">${ic("user")}<span>Log in</span></a>`}`;
 }
+
+$("#searchForm").addEventListener("submit", (e) => {
+  e.preventDefault();
+  const q = $("#searchInput").value.trim();
+  const { parts, query } = parseHash();
+  const next = parts.length ? new URLSearchParams() : query;
+  if (q) next.set("q", q); else next.delete("q");
+  go("/?" + next.toString());
+  $("#searchInput").blur();
+});
 
 // ---------- router ----------
 async function route() {
   const { parts, query } = parseHash();
-  const section = !parts.length || parts[0] === "item" ? "home" : parts[0] === "sell" ? "sell" : ["me", "login", "signup"].includes(parts[0]) ? "me" : "";
-  renderChrome(section);
+  renderHeader(query);
   window.scrollTo(0, 0);
   app.innerHTML = `<p class="loading">Loading…</p>`;
   try {
@@ -123,100 +87,64 @@ async function route() {
     if (parts[0] === "login") return authPage("login", query.get("next"));
     if (parts[0] === "signup") return authPage("signup", query.get("next"));
     if (parts[0] === "me") return ME ? await mePage() : go("/login?next=/me");
-    app.innerHTML = `<div class="empty"><p>This page doesn't exist.</p><a class="btn" href="#/">Browse items</a></div>`;
+    app.innerHTML = `<div class="empty"><p>This page doesn't exist.</p><a class="text-link" href="#/">Browse items</a></div>`;
   } catch (e) {
-    app.innerHTML = `<div class="empty"><p>${esc(e.message)}</p><a class="btn ghost" href="#/">Back to items</a></div>`;
+    app.innerHTML = `<div class="empty"><p>${esc(e.message)}</p><a class="text-link" href="#/">Back to items</a></div>`;
   }
 }
 
-// ---------- cards ----------
-function card(l) {
+// ---------- listing tile (no card box: photo + caption) ----------
+function tile(l) {
   const meta = [l.condition, l.area || l.city].filter(Boolean).join(", ");
-  return `<a class="card" href="#/item/${l.id}">
-    <div class="ph">
-      ${l.cover ? `<img loading="lazy" src="/api/img/${l.cover}" alt="">` : ""}
-      <span class="tag">${naira(l.price)}</span>
-      ${l.status === "sold" ? `<div class="sold-mark">Sold</div>` : ""}
-    </div>
-    <div class="card-body">
-      <div class="title">${esc(l.title)}</div>
-      <div class="meta">${esc(meta)}</div>
+  return `<a class="tile ${l.status === "sold" ? "is-sold" : ""}" href="#/item/${l.id}">
+    ${l.cover ? `<img loading="lazy" src="/api/img/${l.cover}" alt="">` : `<div class="noimg"></div>`}
+    <div class="cap">
+      <span class="price">${l.status === "sold" ? "Sold" : naira(l.price)}</span>
+      <span class="title">${esc(l.title)}</span>
+      <span class="meta">${esc(meta)}</span>
     </div>
   </a>`;
 }
 
-function chip(label, value, active, icon, bg, fg) {
-  return `<button class="chip" aria-pressed="${active}" data-cat="${esc(value)}">
-    <span class="chip-ic" style="background:${bg};color:${fg}">${ic(icon)}</span>${esc(label)}</button>`;
-}
-
-// ---------- home / feed ----------
+// ---------- feed ----------
 async function feedPage(query) {
   const q = query.get("q") || "";
   const category = query.get("category") || "";
   const city = query.get("city") || "";
-  const isHome = !q && !category && !city;
   let page = 0;
 
-  const setFilter = (key, val) => {
+  const link = (key, val) => {
     const next = new URLSearchParams(query);
     if (val) next.set(key, val); else next.delete(key);
-    go("/?" + next.toString());
+    return "#/?" + next.toString();
   };
 
-  const hero = isHome ? `
-    ${ME ? `<h1 class="greet">${greeting()}, ${esc(firstName())}</h1>` : ""}
-    <section class="hero">
-      <div class="hero-tag" aria-hidden="true"></div>
-      <p class="hero-label">Pre-loved, priced to move</p>
-      <h2 class="hero-title">Sell what you no longer use.</h2>
-      <p class="hero-sub">Clothes, shoes, gadgets and home items from people near you. Chat the seller on WhatsApp.</p>
-    </section>
-    <div class="hero-actions">
-      <a class="btn dark" href="#/sell">${ic("plus")} Sell an item</a>
-      <a class="btn outline" href="${ME ? "#/me" : "#/signup"}">${ME ? "My items" : "Create free account"}</a>
-    </div>` : "";
-
-  const heading = q ? `Results for “${esc(q)}”` : category ? esc(category) : city ? `In ${esc(city)}` : "Just listed";
+  const heading = q ? `Results for “${esc(q)}”` : category ? esc(category) : "Just listed";
 
   app.innerHTML = `
-    ${hero}
-    <form class="search" id="searchForm" role="search">
-      ${ic("search")}
-      <input id="searchInput" type="search" value="${esc(q)}" placeholder="Search e.g. Zara dress, sneakers, blender" aria-label="Search items">
-    </form>
-    <p class="label">Shop by category</p>
-    <div class="chips" id="chips">
-      ${chip("All", "", !category, "grid", "#E2F0E9", "#0E5A43")}
-      ${CATEGORIES.map((c) => chip(c, c, c === category, ...CAT_STYLE[c])).join("")}
+    ${!q && !category && !city ? `<p class="intro">Second-hand clothes, shoes, gadgets and home things, sold by people near you. Found something? Message the seller on WhatsApp.</p>` : ""}
+    <div class="bar">
+      <nav class="cats" aria-label="Categories">
+        <a href="${link("category", "")}" ${!category ? 'aria-current="true"' : ""}>Everything</a>
+        ${CATEGORIES.map((c) => `<a href="${link("category", c)}" ${c === category ? 'aria-current="true"' : ""}>${esc(c)}</a>`).join("")}
+      </nav>
+      <label class="city">Near <select id="cityFilter">${options(CITIES, city, "anywhere")}</select></label>
     </div>
-    <div class="filter-row">
-      <h1>${heading}</h1>
-      <select class="select" id="cityFilter" aria-label="Filter by city">${options(CITIES, city, "All cities")}</select>
-    </div>
-    <div class="grid" id="grid"></div>
+    <h1 class="feed-title">${heading}</h1>
+    <div class="masonry" id="grid"></div>
     <div id="feedFoot"></div>`;
 
-  $("#searchForm").addEventListener("submit", (e) => {
-    e.preventDefault();
-    setFilter("q", $("#searchInput").value.trim());
-  });
-  $("#chips").addEventListener("click", (e) => {
-    const b = e.target.closest(".chip");
-    if (b) setFilter("category", b.dataset.cat);
-  });
-  $("#cityFilter").addEventListener("change", (e) => setFilter("city", e.target.value));
+  $("#cityFilter").addEventListener("change", (e) => (location.hash = link("city", e.target.value)));
 
   async function load() {
     const params = new URLSearchParams({ q, category, city, page });
     const data = await api("listings?" + params.toString());
-    $("#grid").insertAdjacentHTML("beforeend", data.items.map(card).join(""));
+    $("#grid").insertAdjacentHTML("beforeend", data.items.map(tile).join(""));
     const foot = $("#feedFoot");
     if (page === 0 && !data.items.length) {
-      foot.innerHTML = `<div class="empty"><p>${q || category || city ? "No items match that yet." : "Nothing listed yet. Be the first to sell something."}</p>
-        <a class="btn" href="#/sell">${ic("plus")} Sell an item</a></div>`;
+      foot.innerHTML = `<div class="empty"><p>${q || category || city ? "Nothing matches that yet." : "Nothing listed yet."}</p><a class="text-link" href="#/sell">List the first item</a></div>`;
     } else if (data.more) {
-      foot.innerHTML = `<button class="btn ghost more" id="moreBtn">Show more</button>`;
+      foot.innerHTML = `<button class="text-link more" id="moreBtn">Show more</button>`;
       $("#moreBtn").onclick = async (e) => {
         e.target.disabled = true;
         page++;
@@ -236,54 +164,43 @@ function waLink(phone, title) {
   return `https://wa.me/${intl}?text=${encodeURIComponent(text)}`;
 }
 
-function factRow(icon, bg, fg, label, value) {
-  return `<div class="row"><span class="row-ic" style="background:${bg};color:${fg}">${ic(icon)}</span>
-    <span class="grow">${esc(label)}</span><span class="val">${esc(value)}</span></div>`;
-}
-
 async function itemPage(id) {
   const l = await api("listings/" + encodeURIComponent(id));
   const since = new Date(l.seller_since).toLocaleDateString("en-NG", { month: "long", year: "numeric" });
   const where = [l.area, l.city].filter(Boolean).join(", ");
-  const [catIcon, catBg, catFg] = CAT_STYLE[l.category] || CAT_STYLE.Other;
 
   let contact;
   if (l.mine) {
     contact = `
-      <button class="btn dark" id="toggleSold">${l.status === "sold" ? "Mark as available" : "Mark as sold"}</button>
-      <button class="btn danger" id="deleteBtn">Delete item</button>`;
+      <button class="btn" id="toggleSold">${l.status === "sold" ? "Mark as available" : "Mark as sold"}</button>
+      <button class="text-link danger" id="deleteBtn">Delete this item</button>`;
   } else if (l.status === "sold") {
-    contact = `<p class="tip">This item has been sold.</p>`;
+    contact = `<p class="note">This item has been sold.</p>`;
   } else if (l.loggedIn && l.seller_phone) {
     contact = `
-      <a class="btn wa" href="${waLink(l.seller_phone, l.title)}" target="_blank" rel="noopener">${ic("chat")} Chat on WhatsApp</a>
-      <a class="btn outline" href="tel:${esc(l.seller_phone)}">${ic("call")} Call ${esc(l.seller_phone)}</a>`;
+      <a class="btn wa" href="${waLink(l.seller_phone, l.title)}" target="_blank" rel="noopener">${ic("chat")} Message on WhatsApp</a>
+      <a class="text-link" href="tel:${esc(l.seller_phone)}">Or call ${esc(l.seller_phone)}</a>`;
   } else {
-    contact = `<a class="btn" href="#/login?next=/item/${l.id}">Log in to contact seller</a>`;
+    contact = `<a class="btn" href="#/login?next=/item/${l.id}">Log in to contact the seller</a>`;
   }
 
   app.innerHTML = `
+    <a class="back" href="#/">${ic("back")} All items</a>
     <article class="item">
-      <div>
-        <div class="gallery">${l.images.map((i) => `<img src="/api/img/${i}" alt="${esc(l.title)}">`).join("")}</div>
-        ${l.images.length > 1 ? `<div class="gallery-count">${l.images.length} photos, swipe to see more</div>` : ""}
-      </div>
-      <div class="panel">
-        <div class="price-big">${naira(l.price)}</div>
+      <div class="gallery">${l.images.map((i) => `<img src="/api/img/${i}" alt="${esc(l.title)}">`).join("")}</div>
+      <div class="info">
         <h1>${esc(l.title)}</h1>
-        <div class="rows facts">
-          ${factRow("star", "#E2F0E9", "#0E5A43", "Condition", l.condition)}
-          ${l.size ? factRow("ruler", "#E3EEFB", "#2F6DB5", "Size", l.size) : ""}
-          ${factRow(catIcon, catBg, catFg, "Category", l.category)}
-          ${factRow("pin", "#FFEBDD", "#D2691E", "Location", where)}
-        </div>
+        <p class="item-price">${l.status === "sold" ? "Sold" : naira(l.price)}</p>
+        <dl class="facts">
+          <div><dt>Condition</dt><dd>${esc(l.condition)}</dd></div>
+          ${l.size ? `<div><dt>Size</dt><dd>${esc(l.size)}</dd></div>` : ""}
+          <div><dt>Category</dt><dd>${esc(l.category)}</dd></div>
+          <div><dt>Location</dt><dd>${esc(where)}</dd></div>
+        </dl>
         ${l.description ? `<p class="desc">${esc(l.description)}</p>` : ""}
-        <div class="seller">
-          <div class="avatar-sm">${esc((l.seller_name || "?")[0].toUpperCase())}</div>
-          <div><strong>${esc(l.seller_name)}</strong><div class="meta">Selling on ${esc(APP_NAME)} since ${since}</div></div>
-        </div>
+        <p class="seller">Sold by <strong>${esc(l.seller_name)}</strong>, on ${esc(APP_NAME)} since ${since}</p>
         <div class="actions">${contact}</div>
-        ${l.mine ? "" : `<p class="tip">Meet in a busy public place and check the item before you pay. Never send money in advance to someone you haven't met.</p>`}
+        ${l.mine ? "" : `<p class="note">Meet somewhere busy and check the item before paying. Never send money to someone you haven't met.</p>`}
       </div>
     </article>`;
 
@@ -330,16 +247,14 @@ function compress(file, max = 1000, quality = 0.75) {
 function sellPage() {
   const photos = [];
   app.innerHTML = `
-    <form class="form panel" id="sellForm" novalidate>
-      <h1>Sell an item</h1>
-      <div>
-        <label>Photos <span class="hint">Up to 5. The first photo is the cover.</span></label>
-        <div class="photos" id="photos"></div>
-      </div>
+    <form class="form" id="sellForm" novalidate>
+      <h1>List an item</h1>
+      <p class="lead">Good photos in daylight sell faster. Add up to 5; the first one is the cover.</p>
+      <div class="photos" id="photos"></div>
       <label>Title <input name="title" maxlength="80" placeholder="e.g. Zara floral midi dress" required></label>
       <div class="two">
         <label>Price (₦) <input name="price" type="number" inputmode="numeric" min="100" placeholder="8000" required></label>
-        <label>Size <span class="hint">Optional</span><input name="size" maxlength="20" placeholder="M, 42, 12…"></label>
+        <label>Size <span class="hint">optional</span><input name="size" maxlength="20" placeholder="M, 42, 12…"></label>
       </div>
       <div class="two">
         <label>Category <select name="category" required>${options(CATEGORIES, "", "Choose")}</select></label>
@@ -347,18 +262,18 @@ function sellPage() {
       </div>
       <div class="two">
         <label>City <select name="city" required>${options(CITIES, ME.city, "Choose")}</select></label>
-        <label>Area <span class="hint">Optional</span><input name="area" maxlength="40" placeholder="e.g. Yaba"></label>
+        <label>Area <span class="hint">optional</span><input name="area" maxlength="40" placeholder="e.g. Yaba"></label>
       </div>
-      <label>Description <span class="hint">Brand, fit, any marks or flaws</span>
+      <label>Description <span class="hint">brand, fit, any marks or flaws</span>
         <textarea name="description" maxlength="1500"></textarea></label>
       <p class="error" id="err"></p>
-      <button class="btn dark" id="postBtn">Post item</button>
+      <button class="btn" id="postBtn">Post item</button>
     </form>`;
 
   const drawPhotos = () => {
     $("#photos").innerHTML =
-      photos.map((p, i) => `<div class="thumb"><img src="${p}" alt="Photo ${i + 1}"><button type="button" data-i="${i}" aria-label="Remove photo ${i + 1}">×</button></div>`).join("") +
-      (photos.length < 5 ? `<label class="add-photo">+ Add photo<input type="file" accept="image/*" multiple id="fileIn"></label>` : "");
+      photos.map((p, i) => `<div class="thumb"><img src="${p}" alt="Photo ${i + 1}"><button type="button" data-i="${i}" aria-label="Remove photo ${i + 1}">Remove</button></div>`).join("") +
+      (photos.length < 5 ? `<label class="add-photo">${ic("plus")}<span>Add photo</span><input type="file" accept="image/*" multiple id="fileIn"></label>` : "");
     const fi = $("#fileIn");
     if (fi) fi.onchange = async () => {
       const files = [...fi.files].slice(0, 5 - photos.length);
@@ -400,15 +315,15 @@ function authPage(mode, next) {
   const isSignup = mode === "signup";
   const nextQs = next ? "?next=" + encodeURIComponent(next) : "";
   app.innerHTML = `
-    <form class="form panel" id="authForm" novalidate>
-      <h1>${isSignup ? "Create your account" : "Welcome back"}</h1>
+    <form class="form narrow" id="authForm" novalidate>
+      <h1>${isSignup ? "Create an account" : "Log in"}</h1>
       ${isSignup ? `<label>Your name <input name="name" maxlength="60" autocomplete="name" required></label>` : ""}
-      <label>Phone number ${isSignup ? `<span class="hint">Buyers will contact you on this number via WhatsApp</span>` : ""}
+      <label>Phone number ${isSignup ? `<span class="hint">buyers reach you here on WhatsApp</span>` : ""}
         <input name="phone" type="tel" inputmode="tel" placeholder="08012345678" autocomplete="tel" required></label>
       ${isSignup ? `<label>City <select name="city">${options(CITIES, "", "Choose")}</select></label>` : ""}
       <label>Password <input name="password" type="password" minlength="6" autocomplete="${isSignup ? "new-password" : "current-password"}" required></label>
       <p class="error" id="err"></p>
-      <button class="btn dark" id="authBtn">${isSignup ? "Create account" : "Log in"}</button>
+      <button class="btn" id="authBtn">${isSignup ? "Create account" : "Log in"}</button>
       <p class="switch">${isSignup
         ? `Already have an account? <a href="#/login${nextQs}">Log in</a>`
         : `New here? <a href="#/signup${nextQs}">Create an account</a>`}</p>
@@ -431,37 +346,25 @@ function authPage(mode, next) {
   };
 }
 
-// ---------- profile ----------
+// ---------- account ----------
 async function mePage() {
   const { items } = await api("my-listings");
   const active = items.filter((i) => i.status === "active").length;
   const sold = items.length - active;
 
   app.innerHTML = `
-    <section class="panel profile">
-      <div class="avatar">${esc(initial())}</div>
+    <header class="me-head">
       <div>
         <h1>${esc(ME.name)}</h1>
-        <p>${esc(ME.phone)}</p>
-        ${ME.city ? `<span class="pill">${esc(ME.city)}</span>` : ""}
+        <p class="lead">${esc(ME.phone)}${ME.city ? `, ${esc(ME.city)}` : ""}</p>
+        <p class="counts"><b>${items.length}</b> listed <b>${active}</b> for sale <b>${sold}</b> sold</p>
       </div>
-    </section>
-    <div class="stats">
-      <div class="stat"><b>${items.length}</b><span>Listed</span></div>
-      <div class="stat"><b>${active}</b><span>Active</span></div>
-      <div class="stat"><b>${sold}</b><span>Sold</span></div>
-    </div>
-
-    <p class="label">Your items</p>
+      <button class="text-link" id="logoutBtn">Log out</button>
+    </header>
+    <h2 class="feed-title">Your items</h2>
     ${items.length
-      ? `<div class="grid">${items.map(card).join("")}</div>`
-      : `<div class="empty"><p>You haven't listed anything yet.</p><a class="btn" href="#/sell">${ic("plus")} Sell an item</a></div>`}
-
-    <p class="label">Account</p>
-    <div class="rows">
-      <a class="row" href="#/sell"><span class="row-ic" style="background:#E2F0E9;color:#0E5A43">${ic("tag")}</span><span class="grow">Sell an item</span><span class="chev">›</span></a>
-      <button class="row" id="logoutBtn"><span class="row-ic" style="background:#FDE8E4;color:#C23A2B">${ic("logout")}</span><span class="grow">Log out</span><span class="chev">›</span></button>
-    </div>`;
+      ? `<div class="masonry">${items.map(tile).join("")}</div>`
+      : `<div class="empty"><p>You haven't listed anything yet.</p><a class="text-link" href="#/sell">List your first item</a></div>`}`;
 
   $("#logoutBtn").onclick = async () => {
     await api("logout", { method: "POST" }).catch(() => {});
