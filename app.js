@@ -37,7 +37,7 @@ const CAT_STYLE = {
   "Women's clothes": ["dress", "#FCE4EF", "#C2185B"],
   "Men's clothes": ["shirt", "#E3EEFB", "#2F6DB5"],
   "Shoes": ["shoe", "#FFEBDD", "#D2691E"],
-  "Bags": ["bag", "#EFE6FD", "#6534DA"],
+  "Bags": ["bag", "#E2F0E9", "#0E5A43"],
   "Kids": ["kids", "#FFF6CF", "#A07C00"],
   "Phones & gadgets": ["phone", "#E2F4EA", "#1F8A4C"],
   "Home & kitchen": ["cup", "#FDE8E4", "#C23A2B"],
@@ -167,7 +167,7 @@ async function feedPage(query) {
   const hero = isHome ? `
     ${ME ? `<h1 class="greet">${greeting()}, ${esc(firstName())}</h1>` : ""}
     <section class="hero">
-      <div class="hero-dot"></div>
+      <div class="hero-tag" aria-hidden="true"></div>
       <p class="hero-label">Pre-loved, priced to move</p>
       <h2 class="hero-title">Sell what you no longer use.</h2>
       <p class="hero-sub">Clothes, shoes, gadgets and home items from people near you. Chat the seller on WhatsApp.</p>
@@ -187,7 +187,7 @@ async function feedPage(query) {
     </form>
     <p class="label">Shop by category</p>
     <div class="chips" id="chips">
-      ${chip("All", "", !category, "grid", "#EFE6FD", "#6534DA")}
+      ${chip("All", "", !category, "grid", "#E2F0E9", "#0E5A43")}
       ${CATEGORIES.map((c) => chip(c, c, c === category, ...CAT_STYLE[c])).join("")}
     </div>
     <div class="filter-row">
@@ -272,7 +272,7 @@ async function itemPage(id) {
         <div class="price-big">${naira(l.price)}</div>
         <h1>${esc(l.title)}</h1>
         <div class="rows facts">
-          ${factRow("star", "#EFE6FD", "#6534DA", "Condition", l.condition)}
+          ${factRow("star", "#E2F0E9", "#0E5A43", "Condition", l.condition)}
           ${l.size ? factRow("ruler", "#E3EEFB", "#2F6DB5", "Size", l.size) : ""}
           ${factRow(catIcon, catBg, catFg, "Category", l.category)}
           ${factRow("pin", "#FFEBDD", "#D2691E", "Location", where)}
@@ -459,7 +459,7 @@ async function mePage() {
 
     <p class="label">Account</p>
     <div class="rows">
-      <a class="row" href="#/sell"><span class="row-ic" style="background:#EFE6FD;color:#6534DA">${ic("tag")}</span><span class="grow">Sell an item</span><span class="chev">›</span></a>
+      <a class="row" href="#/sell"><span class="row-ic" style="background:#E2F0E9;color:#0E5A43">${ic("tag")}</span><span class="grow">Sell an item</span><span class="chev">›</span></a>
       <button class="row" id="logoutBtn"><span class="row-ic" style="background:#FDE8E4;color:#C23A2B">${ic("logout")}</span><span class="grow">Log out</span><span class="chev">›</span></button>
     </div>`;
 
